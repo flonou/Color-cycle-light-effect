@@ -1,0 +1,723 @@
+# This script will step through (forwards or backwards) a list of assigned colors for an RGB light entity. It is based on nwithan8 script
+# Credit : https://community.home-assistant.io/t/zha-cycle-color-for-light-entity/592956
+
+blueprint:
+  name: Color cycle light effect
+  description: >-
+    A script that cycles a light through different colors with customizable random transition and stay times
+  domain: script
+  source_url: https://github.com/nwithan8/configs/blob/5fd9ea779c12444e69d11cf4bc8bf39a028f4506/home_assistant/blueprints/scripts/cycle_color_on_light.yaml
+  input:
+    light:
+      name: Light
+      description: "The Light entity or Light Group entity to loop through the colors chosen below."
+      selector:
+        entity:
+          domain:
+            - light
+            - group
+          multiple: false
+    color_1:
+      name: Color 1
+      description: "Set to black to omit this color."
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_1:
+      name: Minimum Transition Time 1
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_1:
+      name: Maximum Transition Time 1
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_1:
+      name: Minimum Stay Time 1
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_1:
+      name: Maximum Stay Time 1
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_2:
+      name: Color 2
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_2:
+      name: Minimum Transition Time 2
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_2:
+      name: Maximum Transition Time 2
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_2:
+      name: Minimum Stay Time 2
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_2:
+      name: Maximum Stay Time 2
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_3:
+      name: Color 3
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_3:
+      name: Minimum Transition Time 3
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_3:
+      name: Maximum Transition Time 3
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_3:
+      name: Minimum Stay Time 3
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_3:
+      name: Maximum Stay Time 3
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_4:
+      name: Color 4
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_4:
+      name: Minimum Transition Time 4
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_4:
+      name: Maximum Transition Time 4
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_4:
+      name: Minimum Stay Time 4
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_4:
+      name: Maximum Stay Time 4
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_5:
+      name: Color 5
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_5:
+      name: Minimum Transition Time 5
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_5:
+      name: Maximum Transition Time 5
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_5:
+      name: Minimum Stay Time 5
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_5:
+      name: Maximum Stay Time 5
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_6:
+      name: Color 6
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_6:
+      name: Minimum Transition Time 6
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_6:
+      name: Maximum Transition Time 6
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_6:
+      name: Minimum Stay Time 6
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_6:
+      name: Maximum Stay Time 6
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_7:
+      name: Color 7
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_7:
+      name: Minimum Transition Time 7
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_7:
+      name: Maximum Transition Time 7
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_7:
+      name: Minimum Stay Time 7
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_7:
+      name: Maximum Stay Time 7
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_8:
+      name: Color 8
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_8:
+      name: Minimum Transition Time 8
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_8:
+      name: Maximum Transition Time 8
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_8:
+      name: Minimum Stay Time 8
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_8:
+      name: Maximum Stay Time 8
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_9:
+      name: Color 9
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_9:
+      name: Minimum Transition Time 9
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_9:
+      name: Maximum Transition Time 9
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_9:
+      name: Minimum Stay Time 9
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_9:
+      name: Maximum Stay Time 9
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_10:
+      name: Color 10
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_10:
+      name: Minimum Transition Time 10
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_10:
+      name: Maximum Transition Time 10
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_10:
+      name: Minimum Stay Time 10
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_10:
+      name: Maximum Stay Time 10
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_11:
+      name: Color 11
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_11:
+      name: Minimum Transition Time 11
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_11:
+      name: Maximum Transition Time 11
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_11:
+      name: Minimum Stay Time 11
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_11:
+      name: Maximum Stay Time 11
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    color_12:
+      name: Color 12
+      description: "Set to black to omit this color"
+      default:
+        - 0
+        - 0
+        - 0
+      selector:
+        color_rgb: {}
+    min_trans_time_12:
+      name: Minimum Transition Time 12
+      description: "Minimum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    max_trans_time_12:
+      name: Maximum Transition Time 12
+      description: "Maximum time to transition to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 1
+    min_stay_time_12:
+      name: Minimum Stay Time 12
+      description: "Minimum time to stay at this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    max_stay_time_12:
+      name: Maximum Stay Time 12
+      description: "Maximum time to stay to this color."
+      selector:
+        duration: {}
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+
+# Only single, otherwise could flood with attempts
+mode: single
+
+fields:
+  decrement:
+    name: Decrement
+    description: Go backwards instead of forward in the color list
+    required: true
+    selector:
+      boolean:
+      
+variables:
+  light: !input light
+  color_rgbs:
+    - !input "color_1"
+    - !input "color_2"
+    - !input "color_3"
+    - !input "color_4"
+    - !input "color_5"
+    - !input "color_6"
+    - !input "color_7"
+    - !input "color_8"
+    - !input "color_9"
+    - !input "color_10"
+    - !input "color_11"
+    - !input "color_12"
+  min_transition_times:
+    - !input min_trans_time_1
+    - !input min_trans_time_2
+    - !input min_trans_time_3
+    - !input min_trans_time_4
+    - !input min_trans_time_5
+    - !input min_trans_time_6
+    - !input min_trans_time_7
+    - !input min_trans_time_8
+    - !input min_trans_time_9
+    - !input min_trans_time_10
+    - !input min_trans_time_11
+    - !input min_trans_time_12
+  max_transition_times:
+    - !input max_trans_time_1
+    - !input max_trans_time_2
+    - !input max_trans_time_3
+    - !input max_trans_time_4
+    - !input max_trans_time_5
+    - !input max_trans_time_6
+    - !input max_trans_time_7
+    - !input max_trans_time_8
+    - !input max_trans_time_9
+    - !input max_trans_time_10
+    - !input max_trans_time_11
+    - !input max_trans_time_12
+  min_stay_times:
+    - !input min_stay_time_1
+    - !input min_stay_time_2
+    - !input min_stay_time_3
+    - !input min_stay_time_4
+    - !input min_stay_time_5
+    - !input min_stay_time_6
+    - !input min_stay_time_7
+    - !input min_stay_time_8
+    - !input min_stay_time_9
+    - !input min_stay_time_10
+    - !input min_stay_time_11
+    - !input min_stay_time_12
+  max_stay_times:
+    - !input max_stay_time_1
+    - !input max_stay_time_2
+    - !input max_stay_time_3
+    - !input max_stay_time_4
+    - !input max_stay_time_5
+    - !input max_stay_time_6
+    - !input max_stay_time_7
+    - !input max_stay_time_8
+    - !input max_stay_time_9
+    - !input max_stay_time_10
+    - !input max_stay_time_11
+    - !input max_stay_time_12
+
+  # remove invalid (black) RGB values    
+  valid_color_rgbs: >-
+    {%- set data = namespace(entries=[]) -%}
+    {%- for color_rgb in color_rgbs -%}
+      {%- if color_rgb != [0,0,0] -%}
+        {%- set data.entries = data.entries + [color_rgb] -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {{ data.entries }}
+  color_count: "{{ valid_color_rgbs | length}}"
+  
+  # Lights to interact with
+  lights_to_change: "{{
+    expand(light)
+    | selectattr('domain', 'eq', 'light')
+    | map(attribute='entity_id')
+    | list
+    }}"
+
+sequence:
+  - repeat:
+      sequence:
+        - variables:
+            # Next color index to change to.
+            i_next: >
+              {% set ns = 0 %}
+              {% if decrement %}
+                {% set ns = -repeat.index % color_count %}
+              {% else %}
+                {% set ns = repeat.index % color_count %}
+              {% endif %}
+              {{ ns }}
+            color_rgb_next: '{{ color_rgbs[i_next] }}'
+            min_transition_seconds: "{{ ((min_transition_times[i_next].hours)*60*60) + ((min_transition_times[i_next].minutes)*60) + min_transition_times[i_next].seconds }}"
+            max_transition_seconds: "{{ ((max_transition_times[i_next].hours)*60*60) + ((max_transition_times[i_next].minutes)*60) + max_transition_times[i_next].seconds }}"
+            transition_time: "{{ range(min_transition_seconds, max_transition_seconds+1) | random }}"
+            min_stay_seconds: "{{ ((min_stay_times[i_next].hours)*60*60) + ((min_stay_times[i_next].minutes)*60) + min_stay_times[i_next].seconds }}"
+            max_stay_seconds: "{{ ((max_stay_times[i_next].hours)*60*60) + ((max_stay_times[i_next].minutes)*60) + max_stay_times[i_next].seconds }}"
+            stay_time: "{{ range(min_stay_seconds, max_stay_seconds+1) | random }}"
+        
+        - service: light.turn_on
+          target:
+            entity_id: "{{ lights_to_change }}"
+          data:
+            rgb_color: "{{ color_rgb_next }}"
+            transition: "{{ transition_time }}"
+        
+        # The target color might differ from the command. Recover the target color of the light to compare against it later
+        - variables:
+            color_rgb_nexts: >
+              {% set tmpArray = namespace(color_rgb_nexts=[])  %}
+              {% for light_to_change in lights_to_change %}
+                {% set tmpArray.color_rgb_nexts = tmpArray.color_rgb_nexts + [state_attr(light_to_change, 'rgb_color')] %}
+              {% endfor %}
+              {{ tmpArray.color_rgb_nexts }}
+        
+        # transition    
+        - delay: "{{ transition_time }}"
+        
+        # stay
+        - delay: "{{ stay_time }}"
+        
+        - variables:
+            # Means a light target color has been changed elsewhere
+            mustExit: >
+              {% set ns = namespace(mustExit=false) %}
+              {% for light in lights_to_change if not ns.mustExit %}
+                {% if not is_state_attr(lights_to_change[loop.index0], 'rgb_color', color_rgb_nexts[loop.index0]) %}
+                  {% set ns.mustExit = true %}
+                {% endif %}
+              {% endfor %} 
+              {{ ns.mustExit }}
+              
+        
+        # break the loop. Until cannot access the local mustExit variable
+        - if:
+            condition: template
+            value_template: "{{ mustExit }}"
+          then:
+           -  stop: "Stop running the loop"
+            
+      # this will never be true because of strange variable scope
+      until: "{{ mustExit }}"
+      
