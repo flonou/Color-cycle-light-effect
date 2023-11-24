@@ -6,7 +6,7 @@ blueprint:
   description: >-
     A script that cycles a light through different colors with customizable random transition and stay times
   domain: script
-  source_url: https://github.com/flonou/Color-cycle-light-effect/blob/fc33ed9e82f3e2af640b7a2e86a6bb6f2bb2e775/color_cycle_light_effect_with_random_times.yaml
+  source_url: https://github.com/flonou/Color-cycle-light-effect/edit/main/color_cycle_light_effect_with_random_times.yaml
   input:
     light:
       name: Light
@@ -26,6 +26,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_1:
+      name: Brightness 1
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_1:
       name: Minimum Transition Time 1
       description: "Minimum time to transition to this color."
@@ -71,6 +79,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_2:
+      name: Brightness 2
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_2:
       name: Minimum Transition Time 2
       description: "Minimum time to transition to this color."
@@ -116,6 +132,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_3:
+      name: Brightness 3
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_3:
       name: Minimum Transition Time 3
       description: "Minimum time to transition to this color."
@@ -161,6 +185,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_4:
+      name: Brightness 4
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_4:
       name: Minimum Transition Time 4
       description: "Minimum time to transition to this color."
@@ -206,6 +238,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_5:
+      name: Brightness 5
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_5:
       name: Minimum Transition Time 5
       description: "Minimum time to transition to this color."
@@ -251,6 +291,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_6:
+      name: Brightness 6
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_6:
       name: Minimum Transition Time 6
       description: "Minimum time to transition to this color."
@@ -296,6 +344,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_7:
+      name: Brightness 7
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_7:
       name: Minimum Transition Time 7
       description: "Minimum time to transition to this color."
@@ -341,6 +397,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_8:
+      name: Brightness 8
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_8:
       name: Minimum Transition Time 8
       description: "Minimum time to transition to this color."
@@ -386,6 +450,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_9:
+      name: Brightness 9
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_9:
       name: Minimum Transition Time 9
       description: "Minimum time to transition to this color."
@@ -431,6 +503,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_10:
+      name: Brightness 10
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_10:
       name: Minimum Transition Time 10
       description: "Minimum time to transition to this color."
@@ -476,6 +556,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_11:
+      name: Brightness 11
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_11:
       name: Minimum Transition Time 11
       description: "Minimum time to transition to this color."
@@ -521,6 +609,14 @@ blueprint:
         - 0
       selector:
         color_rgb: {}
+    brightness_12:
+      name: Brightness 12
+      description: "Target Brigtness."
+      default: 254
+      selector:
+        number:
+          min: 0
+          max: 254
     min_trans_time_12:
       name: Minimum Transition Time 12
       description: "Minimum time to transition to this color."
@@ -584,6 +680,19 @@ variables:
     - !input "color_10"
     - !input "color_11"
     - !input "color_12"
+  brightnesses:
+    - !input "brightness_1"
+    - !input "brightness_2"
+    - !input "brightness_3"
+    - !input "brightness_4"
+    - !input "brightness_5"
+    - !input "brightness_6"
+    - !input "brightness_7"
+    - !input "brightness_8"
+    - !input "brightness_9"
+    - !input "brightness_10"
+    - !input "brightness_11"
+    - !input "brightness_12"
   min_transition_times:
     - !input min_trans_time_1
     - !input min_trans_time_2
@@ -670,6 +779,7 @@ sequence:
               {% endif %}
               {{ ns }}
             color_rgb_next: '{{ color_rgbs[i_next] }}'
+            brightness_next: '{{ brightnesses[i_next] }}'
             min_transition_seconds: "{{ ((min_transition_times[i_next].hours)*60*60) + ((min_transition_times[i_next].minutes)*60) + min_transition_times[i_next].seconds }}"
             max_transition_seconds: "{{ ((max_transition_times[i_next].hours)*60*60) + ((max_transition_times[i_next].minutes)*60) + max_transition_times[i_next].seconds }}"
             transition_time: "{{ range(min_transition_seconds, max_transition_seconds+1) | random }}"
@@ -682,6 +792,7 @@ sequence:
             entity_id: "{{ lights_to_change }}"
           data:
             rgb_color: "{{ color_rgb_next }}"
+            brightness: "{{ brightness_next }}"
             transition: "{{ transition_time }}"
         
         # The target color might differ from the command. Recover the target color of the light to compare against it later
@@ -692,7 +803,13 @@ sequence:
                 {% set tmpArray.color_rgb_nexts = tmpArray.color_rgb_nexts + [state_attr(light_to_change, 'rgb_color')] %}
               {% endfor %}
               {{ tmpArray.color_rgb_nexts }}
-        
+            brightnesses_next: >
+              {% set tmpArray = namespace(brightnesses_next=[])  %}
+              {% for light_to_change in lights_to_change %}
+                {% set tmpArray.brightnesses_next = tmpArray.brightnesses_next + [state_attr(light_to_change, 'brightness')] %}
+              {% endfor %}
+              {{ tmpArray.brightnesses_next }}
+              
         # transition    
         - delay: "{{ transition_time }}"
         
@@ -705,6 +822,9 @@ sequence:
               {% set ns = namespace(mustExit=false) %}
               {% for light in lights_to_change if not ns.mustExit %}
                 {% if not is_state_attr(lights_to_change[loop.index0], 'rgb_color', color_rgb_nexts[loop.index0]) %}
+                  {% set ns.mustExit = true %}
+                {% endif %}
+                {% if not is_state_attr(lights_to_change[loop.index0], 'brightness', brightnesses_next[loop.index0]) %}
                   {% set ns.mustExit = true %}
                 {% endif %}
               {% endfor %} 
