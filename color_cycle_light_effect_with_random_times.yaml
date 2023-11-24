@@ -6,7 +6,7 @@ blueprint:
   description: >-
     A script that cycles a light through different colors with customizable random transition and stay times
   domain: script
-  source_url: https://github.com/nwithan8/configs/blob/5fd9ea779c12444e69d11cf4bc8bf39a028f4506/home_assistant/blueprints/scripts/cycle_color_on_light.yaml
+  source_url: https://github.com/flonou/Color-cycle-light-effect/blob/fc33ed9e82f3e2af640b7a2e86a6bb6f2bb2e775/color_cycle_light_effect_with_random_times.yaml
   input:
     light:
       name: Light
